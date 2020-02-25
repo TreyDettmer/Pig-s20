@@ -8,6 +8,7 @@ public class PigGameState extends GameState {
     private int player1Score;
     private int runningTotal;
     private int dieValue;
+    private int playerCount = 2;
 
     public PigGameState()
     {
@@ -62,4 +63,11 @@ public class PigGameState extends GameState {
         this.turnId = turnId;
     }
 
+    public int getPlayerCount() {
+        return playerCount;
+    }
+
+    public void setPlayerCount(int playerCount) {
+        this.playerCount = playerCount;
+    }
 }
