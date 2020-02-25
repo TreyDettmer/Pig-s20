@@ -47,6 +47,10 @@ public class PigLocalGame extends LocalGame {
     @Override
     protected boolean makeMove(GameAction action) {
         //TODO  You will implement this method
+        if (playerNames != null){
+            state.setPlayerCount(playerNames.length);
+        }
+
         if (action instanceof PigRollAction)
         {
             Random rand = new Random();
@@ -61,7 +65,7 @@ public class PigLocalGame extends LocalGame {
                 state.setRunningTotal(0);
                 if (state.getPlayerCount() > 1)
                 {
-                    state.setTurnId(state.getTurnId() % 1);
+                    state.setTurnId(Math.abs(state.getTurnId() - 1));
                 }
 
             }
@@ -80,7 +84,7 @@ public class PigLocalGame extends LocalGame {
             state.setRunningTotal(0);
             if (state.getPlayerCount() > 1)
             {
-                state.setTurnId(state.getTurnId() % 1);
+                state.setTurnId(Math.abs(state.getTurnId() - 1));
             }
             return true;
         }

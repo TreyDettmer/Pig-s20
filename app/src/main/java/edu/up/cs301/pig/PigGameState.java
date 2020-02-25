@@ -21,6 +21,7 @@ public class PigGameState extends GameState {
         player0Score = stateToCopy.getPlayer0Score();
         runningTotal = stateToCopy.getRunningTotal();
         dieValue = stateToCopy.getDieValue();
+        playerCount = stateToCopy.getPlayerCount();
     }
 
     public int getDieValue() {
