@@ -6,6 +6,7 @@ import edu.up.cs301.game.GameFramework.infoMessage.GameState;
 import edu.up.cs301.game.R;
 import edu.up.cs301.game.GameFramework.infoMessage.GameInfo;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
+import android.widget.Toast;
 
 /**
  * A GUI for a human to play Pig. This default version displays the GUI but is incomplete
@@ -66,19 +68,33 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
             PigGameState pigGameState = (PigGameState) info;
             if (playerNum == 0){
+
                 playerScoreTextView.setText(pigGameState.getPlayer0Score() +"");
                 oppScoreTextView.setText(pigGameState.getPlayer1Score() + "");
             } else {
                 playerScoreTextView.setText(pigGameState.getPlayer1Score() +"");
                 oppScoreTextView.setText(pigGameState.getPlayer0Score() + "");
             }
-            //playerScoreTextView.setText(pigGameState.getPlayer0Score() +"");
-            //oppScoreTextView.setText(pigGameState.getPlayer1Score() + "");
+            if (pigGameState.getTurnId() == playerNum)
+            {
+                holdButton.setBackgroundColor(Color.BLUE);
+            }
+            else
+            {
+                holdButton.setBackgroundColor(Color.GRAY);
+            }
             turnTotalTextView.setText(pigGameState.getRunningTotal() + "");
+
 
             switch (pigGameState.getDieValue()){
                 case 1:
                     dieImageButton.setImageResource(R.drawable.face1);
+                    if (pigGameState.getTurnId() == playerNum)
+                    {
+                        Context context = myActivity.getApplicationContext();
+                        int duration = Toast.LENGTH_SHORT;
+                        //myActivity.findViewById(R.)
+                    }
                     break;
                 case 2:
                     dieImageButton.setImageResource(R.drawable.face2);
@@ -146,6 +162,20 @@ public class PigHumanPlayer extends GameHumanPlayer implements OnClickListener {
         this.messageTextView     = (TextView)activity.findViewById(R.id.messageTextView);
         this.dieImageButton      = (ImageButton)activity.findViewById(R.id.dieButton);
         this.holdButton          = (Button)activity.findViewById(R.id.holdButton);
+        if (playerNum == 0)
+        {
+            TextView t = (TextView)activity.findViewById(R.id.yourScoreText);
+            t.setText("PLAYER BABY");
+            TextView t2 = (TextView)activity.findViewById(R.id.oppScoreText);
+            t2.setText("Opponent");
+        }
+        else
+        {
+            TextView t = (TextView)activity.findViewById(R.id.oppScoreText);
+            t.setText("PLAYER BABY");
+            TextView t2 = (TextView)activity.findViewById(R.id.yourScoreText);
+            t2.setText("Opponent");
+        }
 
         //Listen for button presses
         dieImageButton.setOnClickListener(this);

@@ -22,6 +22,12 @@ public class PigComputerPlayer extends GameComputerPlayer {
         super(name);
     }
 
+    public void waiting() throws InterruptedException
+    {
+        Thread.sleep(2000);
+
+    }
+
     /**
      * callback method--game's state has changed
      *
@@ -34,8 +40,16 @@ public class PigComputerPlayer extends GameComputerPlayer {
         if (info instanceof PigGameState)
         {
             PigGameState state = (PigGameState)info;
+
             if (state.getTurnId() == playerNum)
             {
+                try {
+                    waiting();
+                }
+                catch (InterruptedException e)
+                {
+
+                }
                 //it's my turn
                 Random rand = new Random();
                 int choice = rand.nextInt(2);

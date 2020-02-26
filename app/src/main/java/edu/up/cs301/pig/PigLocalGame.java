@@ -5,7 +5,10 @@ import edu.up.cs301.game.GameFramework.LocalGame;
 import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.game.GameFramework.infoMessage.GameState;
 
+import android.content.Context;
+import android.os.CountDownTimer;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -17,6 +20,7 @@ import java.util.Random;
  */
 public class PigLocalGame extends LocalGame {
 
+
     private PigGameState state;
     /**
      * This ctor creates a new game state
@@ -24,6 +28,7 @@ public class PigLocalGame extends LocalGame {
     public PigLocalGame() {
         //TODO  You will implement this constructor
         state = new PigGameState();
+
     }
 
     /**
@@ -39,6 +44,8 @@ public class PigLocalGame extends LocalGame {
         return false;
     }
 
+
+
     /**
      * This method is called when a new action arrives from a player
      *
@@ -49,6 +56,8 @@ public class PigLocalGame extends LocalGame {
         //TODO  You will implement this method
         if (playerNames != null){
             state.setPlayerCount(playerNames.length);
+
+
         }
 
         if (action instanceof PigRollAction)
@@ -62,6 +71,9 @@ public class PigLocalGame extends LocalGame {
             }
             else
             {
+
+
+
                 state.setRunningTotal(0);
                 if (state.getPlayerCount() > 1)
                 {
@@ -69,6 +81,7 @@ public class PigLocalGame extends LocalGame {
                 }
 
             }
+
             return true;
         }
         else if (action instanceof PigHoldAction)
@@ -86,6 +99,7 @@ public class PigLocalGame extends LocalGame {
             {
                 state.setTurnId(Math.abs(state.getTurnId() - 1));
             }
+
             return true;
         }
         else {

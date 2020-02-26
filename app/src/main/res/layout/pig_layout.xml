@@ -101,9 +101,10 @@
         </TableLayout>
 
         <ImageButton
+            android:id="@+id/dieButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/dieButton"
+            android:background="#D51616"
             android:src="@drawable/face1" />
 
     </LinearLayout>
